@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "GameFramework/Pawn.h"
 #include "BasePawn.generated.h"
 
@@ -18,6 +19,11 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+private:
+	//add class because we dont need all things from header, we add include in implementation file
+	UPROPERTY()
+	class UCapsuleComponent* CapsuleComp;
 
 public:	
 	// Called every frame
