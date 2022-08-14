@@ -19,6 +19,8 @@ public:
 protected:
 	void RotateTurret(FVector LookAtTarget);
 
+	void Fire();
+
 private:
 	//add class because we dont need all things from header, we add include in implementation file
 	UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"), BlueprintReadOnly)
@@ -32,6 +34,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"), BlueprintReadOnly)
 	USceneComponent* ProjectileSpawnPoint{nullptr};
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	TSubclassOf<class AFire> ProjectileClass;
 
 
 };
