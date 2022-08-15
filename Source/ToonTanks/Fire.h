@@ -25,7 +25,15 @@ public:
 
 private:
 
-	UPROPERTY(VisibleAnywhere, Category = "Components", meta = (AllowPrivateAccess = "true"), BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, Category = "Combat", meta = (AllowPrivateAccess = "true"), BlueprintReadOnly)
 	UStaticMeshComponent* FireMesh{nullptr};
 
+	UPROPERTY(VisibleAnywhere, Category = "Movement")
+	class UProjectileMovementComponent* MovementComponent{nullptr};
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult &Hit);
+
+	UPROPERTY(EditAnywhere)
+	float Damage{50.f};
 };
