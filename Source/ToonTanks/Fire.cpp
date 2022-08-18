@@ -38,6 +38,9 @@ void AFire::Tick(float DeltaTime)
 
 void AFire::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult &Hit) {
 
+
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), );
+	
 	auto MyOwner = GetOwner();
 	if(!MyOwner) {
 		return;
