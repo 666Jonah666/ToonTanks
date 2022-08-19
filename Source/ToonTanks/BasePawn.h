@@ -39,5 +39,8 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	TSubclassOf<class AFire> ProjectileClass;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem* DeathParticle{nullptr};
+
 
 };

@@ -39,5 +39,8 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	UParticleSystem* HitParticles{nullptr};
+
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	UParticleSystemComponent* ParticleSystemComponent{nullptr}; 
 	
 };

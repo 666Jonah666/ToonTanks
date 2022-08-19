@@ -5,6 +5,7 @@
 
 #include "Fire.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -42,6 +43,8 @@ void ABasePawn::Fire() {
 
 void ABasePawn::HandleDestruction() {
 	//TODO: Visual&Sounds effects
+	UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticle, GetActorLocation(), GetActorRotation());
+
 }
 
 
