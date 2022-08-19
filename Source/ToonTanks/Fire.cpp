@@ -29,8 +29,13 @@ void AFire::BeginPlay()
 	Super::BeginPlay();
 
 	FireMesh->OnComponentHit.AddDynamic(this, &AFire::OnHit);
+
+	if (LaunchSound) {
+		UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
+	}
 	
 }
+
 
 // Called every frame
 void AFire::Tick(float DeltaTime)
@@ -41,21 +46,25 @@ void AFire::Tick(float DeltaTime)
 
 void AFire::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult &Hit) {
 
-
-	
-	auto MyOwner = GetOwner();
+	AActor* MyOwner = GetOwner();
 	if(!MyOwner) {
 		Destroy();
 		return;
 	}
 
-	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
-	auto DamageTypeClass = UDamageType::StaticClass();
+	AController* MyOwnerInstigator = MyOwner->GetInstigatorController();
+	UClass* DamageTypeClass = UDamageType::StaticClass();
 
 	if (OtherActor && OtherActor != this && OtherActor != MyOwner) {
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
 		if (HitParticles) {
 			UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, GetActorLocation(), GetActorRotation());
+		}
+		if (HitSound) {
+			UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+		}
+		if(HitCameraShakeClass) {
+			GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
 		}
 	}
 	

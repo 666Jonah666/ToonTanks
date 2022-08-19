@@ -42,5 +42,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	UParticleSystem* DeathParticle{nullptr};
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* DeathSound{nullptr};
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<UCameraShakeBase> DeathCameraShakeClass{nullptr};
 };
