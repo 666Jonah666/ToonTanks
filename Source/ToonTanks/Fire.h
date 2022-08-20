@@ -41,6 +41,15 @@ private:
 	UParticleSystem* HitParticles{nullptr};
 
 	UPROPERTY(VisibleAnywhere, Category = "Combat")
-	UParticleSystemComponent* ParticleSystemComponent{nullptr}; 
+	UParticleSystemComponent* ParticleSystemComponent{nullptr};
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* LaunchSound{nullptr};
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* HitSound{nullptr};
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<UCameraShakeBase> HitCameraShakeClass{nullptr};
 	
 };
