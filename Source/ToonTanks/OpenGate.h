@@ -16,8 +16,8 @@ public:
 	// Sets default values for this component's properties
 	UOpenGate();
 	void OpenDoor(float DeltaTime);
-	void CloseDoor(float DeltaTime);
-	void FindPressurePlate() const;
+	void Test();
+	
 
 protected:
 	// Called when the game starts
@@ -37,13 +37,11 @@ private:
 	UPROPERTY(EditAnywhere)
 	class ATriggerVolume* PressurePlate{nullptr};
 
-	UPROPERTY(EditAnywhere);
-	float DoorClosedDelay{3.f};
+	int32 Speed{45};
 
-	int32 CloseSpeed{45};
+	bool bPlayed{true};
 
-	float DoorLastOpened{0.f};
+	UPROPERTY()
+	UAudioComponent* AudioComponent{nullptr};
 
-	UPROPERTY(EditAnywhere)
-	AActor* ActorThatOpens{nullptr};
 };
